@@ -1,5 +1,6 @@
 package io.github.found_cake.subway.controller
 
+import io.github.found_cake.subway.subway.SubwayAPI
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,6 +17,6 @@ class SubwayController {
 
 	@GetMapping("/info/{station}")
 	fun getSubwayInfo(@PathVariable station: String): String {
-		return station
+		return SubwayAPI.getSubwayByStation(station).result
 	}
 }
