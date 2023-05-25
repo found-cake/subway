@@ -18,7 +18,7 @@ object SubwayAPI {
 			if(result.needWait()){
 				runBlocking {
 					while(result.needWait()){
-						Thread.sleep(1000)
+						Thread.sleep(100)
 					}
 				}
 				return result
@@ -32,7 +32,7 @@ object SubwayAPI {
 		runBlocking {
 			val response:ResponseEntity<String> = RestTemplate().exchange(URL + station, HttpMethod.GET, null, String::class.java)
 			if(response.body == null) {
-				result.result = "NULL!!!"
+				result.result = "response body is null!!!"
 			}else if(response.statusCode.value() != 200) {
 				result.result = "error code : ${response.statusCode.value()}"
 			}else {
